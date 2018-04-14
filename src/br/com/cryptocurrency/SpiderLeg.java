@@ -46,12 +46,17 @@ public class SpiderLeg
                 System.out.println("**Failure** Retrieved something other than HTML");
                 return false;
             }
+            
+            //linksOnPage recebe tudo que contenha a[href] no documento
             Elements linksOnPage = htmlDocument.select("a[href]");
+            
+            //Mostra a quantidade de links encontrados
             System.out.println("Found (" + linksOnPage.size() + ") links");
             for(Element link : linksOnPage)
             {
                 this.links.add(link.absUrl("href"));
             }
+            
             return true;
         }
         catch(IOException ioe)
@@ -73,8 +78,11 @@ public class SpiderLeg
      */
     public boolean searchForWord(String searchWord) throws IOException
     {
-    	FileWriter arq = new FileWriter("C:\\Users\\jefersonr\\Desktop\\web-crawler\\site.txt");
-    	PrintWriter gravarArq = new PrintWriter(arq);
+    	FileWriter cod = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\codigo.txt");
+    	FileWriter txt = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\texto.txt");
+    	PrintWriter gravarCod = new PrintWriter(cod);
+    	PrintWriter gravarTxt = new PrintWriter(txt);
+    	
         // Defensive coding. This method should only be used after a successful crawl.
         if(this.htmlDocument == null)
         {
@@ -82,9 +90,14 @@ public class SpiderLeg
             return false;
         }
         System.out.println("Searching for the word " + searchWord + "...");
+        
+        Document bodyCode = this.htmlDocument;
         String bodyText = this.htmlDocument.body().text();
-        gravarArq.println(bodyText);
-        arq.close();
+        
+        gravarCod.println(bodyCode);
+        gravarTxt.println(bodyText);
+        cod.close();
+        txt.close();
         
         //System.out.println(htmlDocument);
         return bodyText.toLowerCase().contains(searchWord.toLowerCase());

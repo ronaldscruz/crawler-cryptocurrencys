@@ -7,15 +7,29 @@ import java.util.List;
 import java.util.Set;
 
 public class Spider {
+	//Estabelece um limite de páginas para não retornar à pagina inicial por href
 	private static final int MAX_PAGES_TO_SEARCH = 10;
+	
+	//O Set garante que as páginas visitadas sejam únicas e nunca se repitam
 	private Set<String> pagesVisited = new HashSet<String>();
+	
+	//List apenas armazena a lista de urls a serem visitadas (não necessário, porem deixa o crawler consistente)
 	private List<String> pagesToVisit = new LinkedList<String>();
 
-	private String nextUrl() {
+	
+	
+	private String nextUrl() {		//METODO QUE DEFINE A PROXIMA URL A SER VISITADA
 		String nextUrl;
+		
+		//remove a url da lista de pagesToVisit enquanto pagesVisited contenha a nextUrl
+		//em outras palavras, caso a página seja visitada, ela sera removida da lista de paginas para serem visitadas, e entrará
+		//na lista de pagesVisited
+		
 		do {
 			nextUrl = this.pagesToVisit.remove(0);
 		} while (this.pagesVisited.contains(nextUrl));
+		
+		//Adição da nextUrl ao SET de páginas visitadas
 		this.pagesVisited.add(nextUrl);
 		return nextUrl;
 	}
