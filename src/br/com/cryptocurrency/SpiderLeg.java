@@ -78,7 +78,7 @@ public class SpiderLeg
      */
     public boolean searchForWord(String searchWord) throws IOException
     {
-    	FileWriter cod = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\codigo.txt");
+    	FileWriter cod = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\codigo.html");
     	FileWriter txt = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\texto.txt");
     	PrintWriter gravarCod = new PrintWriter(cod);
     	PrintWriter gravarTxt = new PrintWriter(txt);
