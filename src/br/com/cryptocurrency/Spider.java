@@ -60,11 +60,11 @@ public class Spider {
 			}
             if(success)
             {
-                System.out.println(String.format("**Success** Word %s found at %s", searchWord, currentUrl));
+                System.out.println(String.format("**Sucesso** Palavra %s encontrada em %s", searchWord, currentUrl));
                 break;
             }
             this.pagesToVisit.addAll(leg.getLinks());
         }
-        System.out.println(String.format("**Done** Visited %s web page(s)", this.pagesVisited.size()));
+        System.out.println(String.format("**Pronto** Foram visitadas %s páginas", this.pagesVisited.size()));
     }
 }

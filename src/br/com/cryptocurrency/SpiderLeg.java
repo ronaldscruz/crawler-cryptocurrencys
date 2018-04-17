@@ -39,11 +39,11 @@ public class SpiderLeg
             if(connection.response().statusCode() == 200) // 200 is the HTTP OK status code
                                                           // indicating that everything is great.
             {
-                System.out.println("\n**Visiting** Received web page at " + url);
+                System.out.println("\n**Visitando** Página detectada em " + url);
             }
             if(!connection.response().contentType().contains("text/html"))
             {
-                System.out.println("**Failure** Retrieved something other than HTML");
+                System.out.println("**Falha** Algo diferente de HTML detectado");
                 return false;
             }
             
@@ -51,7 +51,7 @@ public class SpiderLeg
             Elements linksOnPage = htmlDocument.select("a[href]");
             
             //Mostra a quantidade de links encontrados
-            System.out.println("Found (" + linksOnPage.size() + ") links");
+            System.out.println("Encontrou (" + linksOnPage.size() + ") links");
             for(Element link : linksOnPage)
             {
                 this.links.add(link.absUrl("href"));
@@ -78,18 +78,18 @@ public class SpiderLeg
      */
     public boolean searchForWord(String searchWord) throws IOException
     {
-    	FileWriter cod = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\codigo.html");
-    	FileWriter txt = new FileWriter("C:\\Users\\Familiar\\Downloads\\PortableGit\\crawler-cryptocurrencys\\texto.txt");
+    	FileWriter cod = new FileWriter("codigo.html");
+    	FileWriter txt = new FileWriter("texto.txt");
     	PrintWriter gravarCod = new PrintWriter(cod);
     	PrintWriter gravarTxt = new PrintWriter(txt);
     	
         // Defensive coding. This method should only be used after a successful crawl.
         if(this.htmlDocument == null)
         {
-            System.out.println("ERROR! Call crawl() before performing analysis on the document");
+            System.out.println("ERRO! HTML não detectado (endereço inválido)");
             return false;
         }
-        System.out.println("Searching for the word " + searchWord + "...");
+        System.out.println("Procurando pela palavra " + searchWord + "...");
         
         Document bodyCode = this.htmlDocument;
         String bodyText = this.htmlDocument.body().text();
