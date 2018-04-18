@@ -11,6 +11,6 @@ public class SpiderTest
     public static void main(String[] args)
     {
         Spider spider = new Spider();
-        spider.search("https://google.com.br", "");
+        spider.search("https://www.google.com", "");
     }
 }
