@@ -86,7 +86,7 @@ public class SpiderLeg
         // Defensive coding. This method should only be used after a successful crawl.
         if(this.htmlDocument == null)
         {
-            System.out.println("ERRO! HTML não detectado (endereço inválido)");
+            System.out.println("ERRO! HTML não detectado (alterar endereço na classe SpiderTest)");
             return false;
         }
         System.out.println("Procurando pela palavra " + searchWord + "...");
